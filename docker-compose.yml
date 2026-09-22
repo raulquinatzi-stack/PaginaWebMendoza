@@ -1,15 +1,12 @@
-version: "3.8"
-
 services:
   web-mendoza-lev:
     build:
       context: .
       dockerfile: Dockerfile
     image: mendoza-lev-web:latest
-    container_name: mendoza_lev_app
     restart: unless-stopped
     ports:
-      - "3000:3000"
+      - "${HOST_PORT:-3001}:3000"
     environment:
       - NODE_ENV=production
       - PORT=3000
